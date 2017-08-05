@@ -59,7 +59,7 @@ function cade_get_healpix_filelist,datadir=datadir,survey=survey,nside=nside,ful
   
   for ns=0,nsurvey-1 do begin
      for nr=0,nreso-1 do begin
-        this_filelist=file_search(use_datadir+use_surveystr[ns]+'Healpix/'+use_nsidestr[nr]+use_skystr+'*_'+use_nsidestr+'.fits',count=count)
+        this_file_list=file_search(use_datadir+use_surveystr[ns]+'Healpix/'+use_nsidestr[nr]+use_skystr+'*_'+use_nsidestr+'.fits',count=count)
         final_file_list=[final_file_list,this_file_list]
      endfor
   endfor
