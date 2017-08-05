@@ -63,7 +63,7 @@ function cade_get_healpix_filelist,datadir=datadir $
   
   for ns=0,nsurvey-1 do begin
      for nr=0,nreso-1 do begin
-        search_path_str=use_datadir+use_surveystr[ns]+'Healpix/'+use_nsidestr[nr]+use_skystr+'*_'+use_nsidestr[nr]+'.fits'
+        search_path_str=use_datadir+'/'+use_surveystr[ns]+'Healpix/'+use_nsidestr[nr]+'/'+use_skystr+'*_'+use_nsidestr[nr]+'.fits'
         if keyword_set(verbose) then $
            message,'Searching '+search_path_str,/info
         this_file_list=file_search(search_path_str,count=count)
