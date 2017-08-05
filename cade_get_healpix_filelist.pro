@@ -1,4 +1,8 @@
-function cade_get_healpix_filelist,datadir=datadir,survey=survey,nside=nside,full=full,partial=partial
+function cade_get_healpix_filelist,datadir=datadir $
+                                   ,survey=survey $
+                                   ,nside=nside $
+                                   ,full=full,partial=partial $
+                                   ,verbose=verbose,debug=debug
 
 ; NAME:
 ;     cade_get_healpix_filelist
@@ -59,8 +63,11 @@ function cade_get_healpix_filelist,datadir=datadir,survey=survey,nside=nside,ful
   
   for ns=0,nsurvey-1 do begin
      for nr=0,nreso-1 do begin
-        this_file_list=file_search(use_datadir+use_surveystr[ns]+'Healpix/'+use_nsidestr[nr]+use_skystr+'*_'+use_nsidestr+'.fits',count=count)
-        final_file_list=[final_file_list,this_file_list]
+        search_path_str=use_datadir+use_surveystr[ns]+'Healpix/'+use_nsidestr[nr]+use_skystr+'*_'+use_nsidestr+'.fits'
+        if keyword_set(verbose) then $
+           message,'Searching '+search_path_str,/info
+        this_file_list=file_search(search_path_str,count=count)
+        if count gt 0 then final_file_list=[final_file_list,this_file_list]
      endfor
   endfor
 
