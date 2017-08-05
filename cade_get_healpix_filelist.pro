@@ -60,7 +60,8 @@ function cade_get_healpix_filelist,datadir=datadir $
   nreso=n_elements(use_nsidestr)
 
   final_file_list=['None']
-  
+  if keyword_set(debug) then stop
+
   for ns=0,nsurvey-1 do begin
      for nr=0,nreso-1 do begin
         search_path_str=use_datadir+'/'+use_surveystr[ns]+'Healpix/'+use_nsidestr[nr]+'/'+use_skystr+'*_'+use_nsidestr[nr]+'.fits'
@@ -71,9 +72,16 @@ function cade_get_healpix_filelist,datadir=datadir $
      endfor
   endfor
 
-  if n_elements(final_file_list) eq 1 then final_file_list='' else final_file_list=final_file_list[1:*]
+  if n_elements(final_file_list) eq 1 then begin
+     final_file_list=''
+     message,'No matching files found',/info
+     if keyword_set(debug) then stop
+  end else begin
+     final_file_list=final_file_list[1:*]
+  end
   
   sortie:
+  if keyword_set(debug) then stop
   return, final_file_list
 
 end
