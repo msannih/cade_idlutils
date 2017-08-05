@@ -72,6 +72,7 @@ function cade_get_healpix_filelist,datadir=datadir $
      endfor
   endfor
 
+  if keyword_set(debug) then stop
   if n_elements(final_file_list) eq 1 then begin
      final_file_list=''
      message,'No matching files found',/info
