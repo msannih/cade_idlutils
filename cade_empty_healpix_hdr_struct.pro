@@ -1,4 +1,4 @@
-function cade_empty_healpix_hdr_struct.pro
+function cade_empty_healpix_hdr_struct
 
   
 ; NAME:
