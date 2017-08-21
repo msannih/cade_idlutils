@@ -13,14 +13,14 @@ function cade_empty_healpix_hdr_struct.pro
   
   nan=!values.f_nan
   
-  empty_healpix_hdr_struct={filename:'' $
+  empty_healpix_hdr_struct={filename:'', $
                             bmaj: nan, $
-                            bmin: nan $
-                            bpa: nan $
-                            bunit: nan $
-                            datamax: nan $
-                            datamin: nan $
-                            cade_comment: '', $
+                            bmin: nan, $
+                            bpa: nan, $
+                            bunit: nan, $
+                            datamax: nan, $
+                            datamin: nan, $
+                            cade_comment: '' $
                            }
   
   return, empty_healpix_hdr_struct
