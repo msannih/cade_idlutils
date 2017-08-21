@@ -137,7 +137,7 @@ end else begin ; end of standard usage
 ;=== REGENERATE -- WE ARE USING THE FITS HEADERS TO REGENERATE THE
 ;                  XCAT FILE
 
-   use_files=cade_get_healpix_filelist()
+   use_files=cade_get_healpix_filelist(datadir=use_datadir)
    nfiles=n_elements(use_files)
    
    dbhdr=cade_empty_healpix_hdr_struct()
