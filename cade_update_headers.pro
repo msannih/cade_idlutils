@@ -82,7 +82,7 @@ if not keyword_set(regenerate) then begin
 
 ; get list of files that we will update
    use_files=db.filename
-   if keyword_set(files) then use_files eq files
+   if keyword_set(files) then use_files=files
    nfiles=n_elements(files)
 
 ; if we are not given specific keywords, then generate list of
@@ -95,7 +95,7 @@ if not keyword_set(regenerate) then begin
    all_db_tags = tag_names(db)
 
    use_keywords = tag_names(db)
-   if keyword_set(keywords) then use_keywords eq strupcase(keywords)
+   if keyword_set(keywords) then use_keywords=strupcase(keywords)
   nkeys=n_elements(keywords)
 
    for f=0,nfiles-1 do begin
