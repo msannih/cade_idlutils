@@ -2,9 +2,9 @@ function cade_get_healpix_filelist,datadir=datadir $
                                    ,survey=survey $
                                    ,nside=nside $
                                    ,full=full,partial=partial $
-                                   ,verbose=verbose,debug=debug
+                                   ,verbose=verbose,debug=debug, help=help
 
-; NAME:
+;+ NAME:
 ;     cade_get_healpix_filelist
 ; CALLING SEQUENCE:
 ;     my_files=cade_get_healpix_filelist([datadir=],[survey=],[nside=],[/full],[/partial])
@@ -36,6 +36,7 @@ function cade_get_healpix_filelist,datadir=datadir $
 ;     
 ; MODIFICATION HISTORY:
 ;    written 5 Aug 2017 by AH
+;
 ;-
 
   IF keyword_set(help) THEN BEGIN
@@ -44,12 +45,16 @@ function cade_get_healpix_filelist,datadir=datadir $
      goto,sortie
   ENDIF
 
+;=== Defaults
+  
   default_nside=2^[7:14]
   use_datadir=getenv('CADE_DATA_DIR')
   use_skystr='*/'
   use_surveystr='*/'
   use_nsidestr=strtrim(string(default_nside),2)
-  
+
+  ;=== Process user input
+
   if keyword_set(datadir) then use_datadir=datadir
   if keyword_set(nside) then use_nsidestr=strtrim(string(nside),2)
   if keyword_set(full) then use_skystr='Full/'
@@ -61,6 +66,8 @@ function cade_get_healpix_filelist,datadir=datadir $
 
   final_file_list=['None']
   if keyword_set(debug) then stop
+
+    ;=== construct list of matching files
 
   for ns=0,nsurvey-1 do begin
      for nr=0,nreso-1 do begin
@@ -83,6 +90,6 @@ function cade_get_healpix_filelist,datadir=datadir $
   
   sortie:
   if keyword_set(debug) then stop
-  return, final_file_list
+  return, final_file_list  
 
-end
+end              ; end of cade_get_healpix_filelist
